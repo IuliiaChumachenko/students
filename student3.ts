@@ -115,8 +115,6 @@ vasya.setGrades();
 vasya.setPresence();
 
 
-// var groupProto = {
-//     __proto__: Array.prototype,
 
 
 class Group {
@@ -130,7 +128,7 @@ class Group {
     }
 
     public setMethodsToGroup(): void {
-        this.group.attendance = this.attendance;
+        this.group.__proto__ = {};
         this.group.performance = this.performance;
     }
 
