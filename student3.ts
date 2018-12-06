@@ -16,9 +16,13 @@
 //     Ну и не забудьте после того как напишите замечательный конструктор, создать пару экземпляров(конкретных студентов)
 // и подергать методы.
 
-class StudentMethods {
-    constructor(protected dateOfBirth: string) {
-        this.dateOfBirth = dateOfBirth;
+class Student {
+    public grades: number[] = [];
+    public attendance: boolean[] = new Array(25);
+
+    constructor(public name: string, public surname: string, protected dateOfBirth: string) {
+        this.name = name;
+        this.surname = surname;
     }
 
     public getAge(): number {
@@ -27,44 +31,44 @@ class StudentMethods {
 
         const age = (today.getMonth() < birthDate.getMonth() ||
             today.getMonth() === birthDate.getMonth() && today.getDate() < birthDate.getDate())
-        ? today.getFullYear() - birthDate.getFullYear() - 1
-        : today.getFullYear() - birthDate.getFullYear();
+            ? today.getFullYear() - birthDate.getFullYear() - 1
+            : today.getFullYear() - birthDate.getFullYear();
 
         return age;
     }
 
-    public getAverageGrade(grades: number[]): number {
-        if (grades.length) {
-            const sumOfGrades = grades.reduce(function(prevResult, currentValue){
+    public getAverageGrade(): number {
+        if (this.grades.length) {
+            const sumOfGrades = this.grades.reduce(function(prevResult, currentValue){
                 return prevResult + currentValue;
             });
 
-            return sumOfGrades / grades.length;
+            return sumOfGrades / this.grades.length;
         } else {
             return 0;
         }
     }
 
-    public present(attendance: boolean[]): void {
-        const index = [...attendance].indexOf(undefined);
+    public present(): void {
+        const index = [...this.attendance].indexOf(undefined);
 
         if (index !== -1) {
-            attendance[index] = true;
+            this.attendance[index] = true;
         }
     }
 
-    public absent(attendance: boolean[]): void {
-        const index = [...attendance].indexOf(undefined);
+    public absent(): void {
+        const index = [...this.attendance].indexOf(undefined);
 
         if (index !== -1) {
-            attendance[index] = false;
+            this.attendance[index] = false;
         }
     }
 
-    public summary(grades: number[], attendance: boolean[]): string {
-        const averageGrade = this.getAverageGrade(grades);
-        const presents = attendance.filter(Boolean).length;
-        const averageAttendance = presents / attendance.length;
+    public summary(): string {
+        const averageGrade = this.getAverageGrade();
+        const presents = this.attendance.filter(Boolean).length;
+        const averageAttendance = presents / this.attendance.length;
 
         if (averageGrade > 90 && averageAttendance > .9) {
             return "Ути какой молодчинка!";
@@ -75,18 +79,6 @@ class StudentMethods {
         } else {
             return "Редиска!";
         }
-    }
-}
-
-class Student extends StudentMethods {
-    public grades: number[] = [];
-    public attendance: boolean[] = new Array(25);
-
-    constructor(public name: string, public surname: string, protected dateOfBirth: string) {
-        super(dateOfBirth);
-
-        this.name = name;
-        this.surname = surname;
     }
 
     public setGrades(): void {
@@ -99,7 +91,7 @@ class Student extends StudentMethods {
         [...this.attendance].forEach(() => {
             const presence = Math.floor(Math.random() * 10);
 
-            presence >= 3 ? this.present(this.attendance) : this.absent(this.attendance);
+            presence >= 3 ? this.present() : this.absent();
         })
     }
 }
@@ -113,8 +105,8 @@ console.log(
     vasya.surname,
     vasya.grades,
     vasya.getAge(),
-    vasya.getAverageGrade(vasya.grades),
+    vasya.getAverageGrade(),
     vasya.attendance,
-    vasya.summary(vasya.grades, vasya.attendance)
+    vasya.summary()
 );
 

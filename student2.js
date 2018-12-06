@@ -17,7 +17,15 @@
 // и подергать методы.
 
 "use strict";
-class StudentMethods {
+class Student {
+    constructor(name, surname, dateOfBirth) {
+        this.name = name;
+        this.surname = surname;
+        this.dateOfBirth = dateOfBirth;
+        this.grades = [];
+        this.attendance = new Array(25);
+    }
+
     getAge() {
         const today = new Date();
         const birthDate = new Date(this.dateOfBirth);
@@ -75,18 +83,6 @@ class StudentMethods {
     }
 }
 
-class Student extends StudentMethods{
-    constructor(name, surname, dateOfBirth) {
-        super();
-
-        this.name = name;
-        this.surname = surname;
-        this.dateOfBirth = dateOfBirth;
-        this.grades = [];
-        this.attendance = new Array(25);
-    }
-}
-
 const setGrades = student => {
     const gradesArr = new Array (Math.floor(Math.random()*10));
 
@@ -105,34 +101,70 @@ const vasya = new Student('Vasya', 'Vasychkin', '1998-02-12');
 setGrades(vasya);
 setPresence(vasya);
 
-console.log(
-    vasya.name,
-    vasya.surname,
-    vasya.dateOfBirth,
-    vasya.grades,
-    vasya.getAge(),
-    vasya.getAverageGrade()
-);
-
-console.log(
-    vasya.attendance,
-    vasya.summary()
-);
-
-// var olya = new Student('Olya', 'Vasychkina', '1999-12-10');
-// setGrades(olya);
-// setPresence(olya);
-
 // console.log(
-//     olya.name,
-//     olya.surname,
-//     olya.dateOfBirth,
-//     olya.grades,
-//     olya.getAge(),
-//     olya.getAverageGrade()
+//     vasya.name,
+//     vasya.surname,
+//     vasya.dateOfBirth,
+//     vasya.grades,
+//     vasya.getAge(),
+//     vasya.getAverageGrade(),
+//     vasya.attendance,
+//     vasya.summary()
 // );
 
-// console.log(
-//     olya.attendance,
-//     olya.summary()
-// );
+var olya = new Student('Olya', 'Vasychkina', '1999-12-10');
+setGrades(olya);
+setPresence(olya);
+
+var groupProto = {
+    __proto__: Array.prototype,
+    attendance: (surname) => {
+        const groupAttendence = group.map(item => {
+            const presence = item.attendance.filter(Boolean).length;
+
+            return {
+                surname: item.surname,
+                attendance: presence / item.attendance.length
+            };
+        });
+
+        if (!surname) {
+            return groupAttendence.reduce((accum, item) => {
+                return accum + item.attendance;
+            }, 0) / groupAttendence.length;
+        } else {
+            return groupAttendence
+                .sort((a,b) =>  b.attendance - a.attendance)
+                .findIndex(item => item.surname === surname) + 1;
+        }
+
+    },
+
+    performance: (surname) => {
+        if (!surname) {
+            return group.reduce(function(accum, item) {
+                return accum + item.getAverageGrade();
+            }, 0) / group.length;
+        } else {
+            return group
+                .sort((a,b) =>  b.getAverageGrade() - a.getAverageGrade())
+                .findIndex(item => item.surname === surname) + 1;
+        }
+    }
+};
+
+class Group {
+    constructor() {
+        const group = [...arguments];
+        group.__proto__ = groupProto;
+
+        return group;
+    }
+}
+
+var group = new Group(vasya, olya);
+
+console.log(group);
+console.log(group.length);
+console.log(group.attendance());
+console.log(group.performance());

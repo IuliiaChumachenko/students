@@ -17,82 +17,78 @@
 // и подергать методы.
 
 "use strict";
-var StudentMethods = function() {
-    this.getAge = function() {
-        var today = new Date();
-        var birthDate = new Date(this.dateOfBirth);
-        var age = today.getFullYear() - birthDate.getFullYear();
-
-        if (today.getMonth() < birthDate.getMonth() ||
-            (today.getMonth() === birthDate.getMonth() && today.getDate() < birthDate.getDate())) {
-            age--;
-        }
-
-        return age;
-    };
-
-    this.getAverageGrade = function() {
-        if (this.grades.length) {
-            var sumOfGrades = this.grades.reduce(function(prevResult, currentValue){
-                return prevResult + currentValue;
-            });
-
-            return sumOfGrades / this.grades.length;
-        } else {
-            return 0;
-        }
-    };
-
-    this.present = function() {
-        for (var i = 0; i < this.attendance.length; i++) {
-            if (typeof this.attendance[i] === 'undefined') {
-                this.attendance[i] = true;
-                break;
-            }
-        }
-    };
-
-    this.absent = function() {
-        for (var i = 0; i < this.attendance.length; i++) {
-            if (typeof this.attendance[i] === 'undefined') {
-                this.attendance[i] = false;
-                break;
-            }
-        }
-    };
-
-    this.summary = function() {
-        var averageGrade = this.getAverageGrade();
-        var presents = 0;
-
-        for(var i = 0; i < this.attendance.length; i++) {
-            if (this.attendance[i]) {
-                presents++;
-            }
-        }
-
-        var averageAttendance = presents / this.attendance.length;
-
-        if (averageGrade > 90 && averageAttendance > .9) {
-            return "Ути какой молодчинка!";
-        }
-
-        if (averageGrade > 90 || averageAttendance > .9) {
-            return "Норм, но можно лучше";
-        } else {
-            return "Редиска!";
-        }
-    };
-};
-
 var Student = function(name, surname, dateOfBirth) {
-    StudentMethods.call(this);
-
     this.name = name;
     this.surname = surname;
     this.dateOfBirth = dateOfBirth;
     this.grades = [];
     this.attendance = new Array(25);
+};
+
+Student.prototype.getAge = function() {
+    var today = new Date();
+    var birthDate = new Date(this.dateOfBirth);
+    var age = today.getFullYear() - birthDate.getFullYear();
+
+    if (today.getMonth() < birthDate.getMonth() ||
+        (today.getMonth() === birthDate.getMonth() && today.getDate() < birthDate.getDate())) {
+        age--;
+    }
+
+    return age;
+};
+
+Student.prototype.getAverageGrade = function() {
+    if (this.grades.length) {
+        var sumOfGrades = this.grades.reduce(function(prevResult, currentValue){
+            return prevResult + currentValue;
+        });
+
+        return sumOfGrades / this.grades.length;
+    } else {
+        return 0;
+    }
+};
+
+Student.prototype.present = function() {
+    for (var i = 0; i < this.attendance.length; i++) {
+        if (typeof this.attendance[i] === 'undefined') {
+            this.attendance[i] = true;
+            break;
+        }
+    }
+};
+
+Student.prototype.absent = function() {
+    for (var i = 0; i < this.attendance.length; i++) {
+        if (typeof this.attendance[i] === 'undefined') {
+            this.attendance[i] = false;
+            break;
+        }
+    }
+};
+
+Student.prototype.summary = function() {
+    var averageGrade = this.getAverageGrade();
+    var presents = 0;
+
+    for(var i = 0; i < this.attendance.length; i++) {
+        if (this.attendance[i]) {
+            presents++;
+        }
+    }
+
+    var averageAttendance = presents / this.attendance.length;
+
+    if (averageGrade > 90 && averageAttendance > .9) {
+        return "Ути какой молодчинка!";
+    }
+
+    if (averageGrade > 90 || averageAttendance > .9) {
+        return "Норм, но можно лучше";
+    } else {
+        return "Редиска!";
+    }
 };
 
 function setGrades(student) {
@@ -115,34 +111,20 @@ var vasya = new Student('Vasya', 'Vasychkin', '1998-02-12');
 setGrades(vasya);
 setPresence(vasya);
 
-console.log(
-    vasya.name,
-    vasya.surname,
-    vasya.dateOfBirth,
-    vasya.grades,
-    vasya.getAge(),
-    vasya.getAverageGrade()
-);
-
-console.log(
-    vasya.attendance,
-    vasya.summary()
-);
+// console.log(
+//     vasya.name,
+//     vasya.surname,
+//     vasya.dateOfBirth,
+//     vasya.grades,
+//     vasya.getAge(),
+//     vasya.getAverageGrade(),
+//     vasya.attendance,
+//     vasya.summary()
+// );
 
 var olya = new Student('Olya', 'Vasychkina', '1999-12-10');
 setGrades(olya);
 setPresence(olya);
-
-// console.log(
-//     olya.name,
-//     olya.surname,
-//     olya.dateOfBirth,
-//     olya.grades,
-//     olya.getAge(),
-//     olya.getAverageGrade(),
-//     olya.attendance,
-//     olya.summary()
-// );
 
 // Создать конструктор массива, который будет содержать объекты из прошлого задания на прототипы.
 // Массивы созданные с помощью этого конструктора должны содержать следующие методы:
@@ -150,49 +132,85 @@ setPresence(olya);
 // если с аргументом — строкой содержащей фамилию одного из студентов, то возвращает его место в рейтинге посещаемости
 //  .performance — то же самое, но с оценками
 
-// function createGroup() {
-//     var group = [];
-//     var groupAttendence = [];
-//
-//     for (var i = 0; i < arguments.length; i++) {
-//         group[i] = arguments[i];
-//     }
-//
-//     group.attendance = function(surname) {
-//         var sumPresence = 0;
-//
-//         for (var i = 0; i < this.length; i++) {
-//             var presence = 0;
-//
-//             for(var j = 0; j < this[i].attendance.length; j++) {
-//                 if (this[i].attendance[j]) {
-//                     presence++;
-//                     sumPresence++;
-//                 }
-//             }
-//
-//             groupAttendence[groupAttendence.length] = {
-//                 surname: this[i].surname,
-//                 attendence: presence / this[i].attendance.length
-//             };
-//         }
-//
-//         if (!surname) {
-//             return sumPresence / (this.length * this[0].attendance.length);
-//         } else {
-//             groupAttendence.sort(function(a, b){
-//                 return a.attendence > b.attendence ? -1 : 1;
-//             });
-//             console.log(groupAttendence);
-//         }
-//     };
-//
-//     group.performance = function() {
-//
-//     };
-//
-//     return group;
-// }
-//
-// var myGroup = createGroup(vasya, olya);
-// console.log(myGroup.attendance('Vasychkina'));
+var groupProto = Object.create(Array.prototype);
+
+groupProto.attendance = function(surname) {
+    var groupAttendence = [];
+
+    for (var i = 0; i < this.length; i++) {
+        var presence = 0;
+
+        for(var j = 0; j < this[i].attendance.length; j++) {
+            if (this[i].attendance[j]) {
+                presence++;
+            }
+        }
+
+        groupAttendence[groupAttendence.length] = {
+            surname: this[i].surname,
+            attendance: presence / this[i].attendance.length
+        };
+    }
+
+    if (!surname) {
+        return groupAttendence.reduce(function(accum, item) {
+            return accum + item.attendance;
+        }, 0) / groupAttendence.length;
+    } else {
+        groupAttendence.sort(function(a,b) {
+            return  b.attendance - a.attendance;
+        });
+
+        for (var i = 0; i < groupAttendence.length; i++) {
+            if (groupAttendence[i].surname === surname) {
+                return i + 1;
+            }
+        }
+    }
+},
+
+groupProto.performance = function(surname) {
+    if (!surname) {
+        return this.reduce(function(accum, item) {
+            return accum + item.getAverageGrade();
+        }, 0) / this.length;
+    } else {
+        this.sort(function(a,b) {
+            return  b.getAverageGrade() - a.getAverageGrade();
+        });
+
+        for (var i = 0; i < this.length; i++) {
+            if (this[i].surname === surname) {
+                return i + 1;
+            }
+        }
+    }
+};
+
+
+function Group() {
+    var group = [];
+
+    for(var i = 0; i < arguments.length; i++) {
+        group[group.length] = arguments[i];
+    }
+
+    Object.setPrototypeOf(group, groupProto);
+
+
+    return group;
+}
+
+// Group.prototype = Object.create(Array.prototype);
+// Group.prototype.constructor = Group;
+// Group.prototype.attendance = function() {};
+// Group.prototype.performance = function() {};
+
+var group = new Group(vasya, olya);
+
+// console.log(group);
+// console.log(group.length);
+// console.log(group.attendance("Vasychkin"));
+// console.log(group.performance("Vasychkin"));
+
+
