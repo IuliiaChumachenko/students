@@ -110,3 +110,67 @@ console.log(
     vasya.summary()
 );
 
+const olya = new Student('Olya', 'Vasychkina', '1999-12-10');
+vasya.setGrades();
+vasya.setPresence();
+
+
+// var groupProto = {
+//     __proto__: Array.prototype,
+
+
+class Group {
+    public group: any;
+
+    constructor() {
+        this.group = [...arguments];
+        this.setMethodsToGroup();
+
+        return this.group;
+    }
+
+    public setMethodsToGroup(): void {
+        this.group.attendance = this.attendance;
+        this.group.performance = this.performance;
+    }
+
+    public attendance (surname?: string): number {
+        const groupAttendence = this.group.map(item => {
+            const presence = item.attendance.filter(Boolean).length;
+
+            return {
+                surname: item.surname,
+                attendance: presence / item.attendance.length
+            };
+        });
+
+        if (!surname) {
+            return groupAttendence.reduce((accum, item) => {
+                return accum + item.attendance;
+            }, 0) / groupAttendence.length;
+        } else {
+            return groupAttendence
+                .sort((a,b) =>  b.attendance - a.attendance)
+                .findIndex(item => item.surname === surname) + 1;
+        }
+    }
+
+    public performance (surname?: string): number {
+        if (!surname) {
+            return this.group.reduce(function(accum, item) {
+                return accum + item.getAverageGrade();
+            }, 0) / this.group.length;
+        } else {
+            return this.group
+                .sort((a,b) =>  b.getAverageGrade() - a.getAverageGrade())
+                .findIndex(item => item.surname === surname) + 1;
+        }
+    }
+
+}
+
+var group = new Group(vasya, olya);
+
+console.log(group);
+console.log(group.attendance());
+console.log(group.performance());

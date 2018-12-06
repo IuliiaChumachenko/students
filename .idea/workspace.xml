@@ -3,9 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="2a4fc5fa-1751-4b2f-9393-4998e7128d99" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/script.js" beforeDir="false" afterPath="$PROJECT_DIR$/student1.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/student2.js" beforeDir="false" afterPath="$PROJECT_DIR$/student2.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/student3.ts" beforeDir="false" afterPath="$PROJECT_DIR$/student3.ts" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
@@ -79,8 +76,8 @@
       <file leaf-file-name="student1.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/student1.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1516">
-              <caret line="210" selection-start-line="210" selection-end-line="214" />
+            <state relative-caret-position="564">
+              <caret line="205" column="46" selection-start-line="205" selection-start-column="46" selection-end-line="205" selection-end-column="46" />
               <folding>
                 <element signature="n#!!doc" expanded="true" />
               </folding>
@@ -88,20 +85,20 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="student2.js" pinned="false" current-in-tab="true">
+      <file leaf-file-name="student2.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/student2.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="564">
-              <caret line="161" column="5" lean-forward="true" selection-start-line="161" selection-start-column="5" selection-end-line="161" selection-end-column="5" />
+            <state relative-caret-position="-371">
+              <caret line="118" selection-start-line="118" selection-end-line="169" selection-end-column="33" />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="student3.ts" pinned="false" current-in-tab="false">
+      <file leaf-file-name="student3.ts" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/student3.ts">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="408">
-              <caret line="40" column="33" selection-start-line="40" selection-start-column="33" selection-end-line="40" selection-end-column="33" />
+            <state relative-caret-position="190">
+              <caret line="121" selection-start-line="121" selection-end-line="121" />
             </state>
           </provider>
         </entry>
@@ -128,10 +125,10 @@
     <option name="CHANGED_PATHS">
       <list>
         <option value="$PROJECT_DIR$/script.js" />
-        <option value="$PROJECT_DIR$/student3.ts" />
         <option value="$PROJECT_DIR$/index.html" />
-        <option value="$PROJECT_DIR$/student1.js" />
         <option value="$PROJECT_DIR$/student2.js" />
+        <option value="$PROJECT_DIR$/student1.js" />
+        <option value="$PROJECT_DIR$/student3.ts" />
       </list>
     </option>
   </component>
@@ -146,7 +143,7 @@
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
     <option name="x" value="-10" />
-    <option name="width" value="1588" />
+    <option name="width" value="904" />
     <option name="height" value="1040" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
@@ -171,7 +168,7 @@
   </component>
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../polyfills" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../screencast" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="ts.external.directory.path" value="C:\Program Files\JetBrains\WebStorm 2018.2.5\plugins\JavaScriptLanguage\jsLanguageServicesImpl\external" />
@@ -208,17 +205,18 @@
       <workItem from="1544002687484" duration="137000" />
       <workItem from="1544024678201" duration="1271000" />
       <workItem from="1544039336246" duration="9700000" />
-      <workItem from="1544078141277" duration="1340000" />
+      <workItem from="1544078141277" duration="5301000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="35338000" />
+    <option name="totallyTimeSpent" value="39299000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1550" height="832" extended-state="6" />
     <editor active="true" />
     <layout>
+      <window_info anchor="bottom" id="TypeScript" order="9" />
       <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.11764706" />
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="bottom" id="Docker" order="8" show_stripe_button="false" />
@@ -226,14 +224,13 @@
       <window_info anchor="bottom" id="Version Control" order="7" />
       <window_info anchor="bottom" id="Run" order="2" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
-      <window_info anchor="bottom" id="Terminal" order="10" weight="0.07153076" />
+      <window_info anchor="bottom" id="Terminal" order="10" weight="0.34026745" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
-      <window_info anchor="bottom" id="TypeScript" order="9" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.3118741" />
@@ -334,13 +331,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/student3.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="408">
-          <caret line="40" column="33" selection-start-line="40" selection-start-column="33" selection-end-line="40" selection-end-column="33" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/index.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="170">
@@ -350,8 +340,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/student1.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1516">
-          <caret line="210" selection-start-line="210" selection-end-line="214" />
+        <state relative-caret-position="564">
+          <caret line="205" column="46" selection-start-line="205" selection-start-column="46" selection-end-line="205" selection-end-column="46" />
           <folding>
             <element signature="n#!!doc" expanded="true" />
           </folding>
@@ -360,8 +350,15 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/student2.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="564">
-          <caret line="161" column="5" lean-forward="true" selection-start-line="161" selection-start-column="5" selection-end-line="161" selection-end-column="5" />
+        <state relative-caret-position="-371">
+          <caret line="118" selection-start-line="118" selection-end-line="169" selection-end-column="33" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/student3.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="190">
+          <caret line="121" selection-start-line="121" selection-end-line="121" />
         </state>
       </provider>
     </entry>
